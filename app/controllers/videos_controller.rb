@@ -1,0 +1,2 @@
+class vidoes_controller < ApplicationController
+end
