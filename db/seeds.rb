@@ -6,23 +6,104 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Video.create(title:"Fury",
-             small_cover_url: "furry.sm.com",
-             large_cover_url: "furry.lg.com",
-             description: "Furry --lots of guns blazzing here.")
-Video.create(title: "Equilizer",
-             small_cover_url: "equilizer.sm.com",
-             large_cover_url: "equilize.sm.com",
-             description: " Equilizer, awesome movie.")
-Video.create(title: "The November Man",
-             small_cover_url: "tnm.sm.com",
-             large_cover_url: "tnm.lg.com",
-             description: "November, you gotta watch it.")
-Video.create(title: "Hunger Games",
-             small_cover_url: "hg.sm.com",
-             large_cover_url: "hg.lg.com",
-             description: "Hunger Games, its life or death.")
-Video.create(title: " Jack Ryan",
-             small_cover_url: "jr.sm.com",
-             large_cover_url: "jr.sm.com",
-             description: "Jack Ryan, action thriller, spies and terror!")
+# Categories
+
+Category.create(name: "Action")
+Category.create(name: "Adult Animation")
+Category.create(name: "Comedy")
+Category.create(name: "Documentary")
+
+#Videos
+
+      # Comedy
+
+ 
+Video.create(title: "Monk",
+             description: "Adrian expereinces execessive compulsive disorder after the death of his wife.",
+             small_cover_url: "/tmp/monk.jpg",
+             # large_cover_url: "/tmp/monk_large.jpg",
+             category_id: 1) 
+Video.create(title: "South Park",
+             description: "A fictional mountain town in Colorado.",
+             small_cover_url: "/tmp/south_park.jpg",
+             # large_cover_url: "/tmp/monk_large.jpg",
+             category_id: 1) 
+Video.create(title: "Family Guy",
+             description: "Adult animation, try it out.",
+             small_cover_url: "/tmp/family_guy.jpg",
+             # large_cover_url: "/tmp/monk_large.jpg",
+             category_id: 1)  
+Video.create(title: "Futurama",
+             description: "Critically acclaimed, nominated 17 Annie Awards and 12 Emmy Awards, you might like it..",
+             small_cover_url: "/tmp/futurama.jpg",
+             # large_cover_url: "/tmp/monk_large.jpg",
+             category_id: 1)    
+
+      # Adult Animation
+
+Video.create(title: "South Park",
+             description: "A fictional mountain town in Colorado USA.",
+             small_cover_url: "/tmp/south_park.jpg",
+             # large_cover_url: "/tmp/monk_large.jpg",
+             category_id: 2)  
+Video.create(title: "Monk",
+             description: "Adrian expereinces execessive compulsive disorder after the death of his wife.",
+             small_cover_url: "/tmp/monk.jpg",
+             # large_cover_url: "/tmp/monk_large.jpg",
+             category_id: 2)  
+Video.create(title: "Family Guy",
+             description: "Adult animation, try it out.",
+             small_cover_url: "/tmp/family_guy.jpg",
+             # large_cover_url: "/tmp/monk_large.jpg",
+             category_id: 2)  
+Video.create(title: "Futurama",
+             description: "Critically acclaimed, nominated 17 Annie Awards and 12 Emmy Awards, you might like it..",
+             small_cover_url: "/tmp/futurama.jpg",
+             # large_cover_url: "/tmp/monk_large.jpg",
+             category_id: 2)    
+
+      # Action
+
+Video.create(title: "South Park",
+             description: "A fictional mountain town in Colorado.",
+             small_cover_url: "/tmp/south_park.jpg",
+             # large_cover_url: "/tmp/monk_large.jpg",
+             category_id: 3)  
+Video.create(title: "Monk",
+             description: "Adrian expereinces execessive compulsive disorder after the death of his wife.",
+             small_cover_url: "/tmp/monk.jpg",
+             # large_cover_url: "/tmp/monk_large.jpg",
+             category_id: 3)  
+Video.create(title: "Family Guy",
+             description: "Adult animation, try it out.",
+             small_cover_url: "/tmp/family_guy.jpg",
+             # large_cover_url: "/tmp/monk_large.jpg",
+             category_id: 3)  
+Video.create(title: "Futurama",
+             description: "Critically acclaimed, nominated 17 Annie Awards and 12 Emmy Awards, you might like it..",
+             small_cover_url: "/tmp/futurama.jpg",
+             # large_cover_url: "/tmp/monk_large.jpg",
+             category_id: 3)    
+
+      # Documentary
+
+Video.create(title: "South Park",
+             description: "A fictional mountain town in Colorado.",
+             small_cover_url: "/tmp/south_park.jpg",
+             # large_cover_url: "/tmp/monk_large.jpg",
+             category_id: 4)  
+Video.create(title: "Monk",
+             description: "Adrian expereinces execessive compulsive disorder after the death of his wife.",
+             small_cover_url: "/tmp/monk.jpg",
+             # large_cover_url: "/tmp/monk_large.jpg",
+             category_id: 4)  
+Video.create(title: "Family Guy",
+             description: "Adult animation, try it out.",
+             small_cover_url: "/tmp/family_guy.jpg",
+             # large_cover_url: "/tmp/monk_large.jpg",
+             category_id: 4)  
+Video.create(title: "Futurama",
+             description: "Critically acclaimed, nominated 17 Annie Awards and 12 Emmy Awards, you might like it..",
+             small_cover_url: "/tmp/futurama.jpg",
+             # large_cover_url: "/tmp/monk_large.jpg",
+             category_id: 4)    
