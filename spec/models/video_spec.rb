@@ -13,4 +13,14 @@ describe Video do
                                                   category: adult_animation)
                           expect(south_park.category).to eq(adult_animation)
   end
+
+  it "does not allow the creation of a video without a title" do
+    video = Video.new(description: "Good movie")
+    expect(Video.count).to eq(0)
+
+end
+  it "does not allow the creation of a video without a description" do
+    video = Video.new(title: "Good movie")
+    expect(Video.count).to eq(0)
+  end
 end
