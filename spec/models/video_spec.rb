@@ -36,5 +36,6 @@ describe Video do
       mandela = Video.create(title: "Mandela", description: "Political thriller!")
       expect(Video.search_by_title("")).to eq([])
     end
+
   end
 end
