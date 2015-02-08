@@ -1,0 +1,11 @@
+%section.register.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      %form.log_in
+      = bootstrap_form_tag url: '/login' do |f|
+        %header
+          %h1 Login
+        %fieldset
+          = f.email_field     :email,     label: "Email Address"
+          = f.password_field  :password , lable: "Password"     
+          = f.submit "Log In"
