@@ -6,8 +6,6 @@
         %header
           %h1 Sign In
         %fieldset
-          = label_tag     :email, "Email Address"
-          = email_field_tag :email
-          = label_tag :password
-          = password_field_tag :password   
+          = f.email_field :email, label: "Email Address"
+          = f.password_field :password 
           = f.submit "Sign In", class: 'btn btn-default'

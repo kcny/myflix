@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to home_path, notice: "You're now logged in!"
     else
       flash[:error] = "Your email/password combination is invalid."
-      redirect_to sign_in_path
+      redirect_to login_path
     end
   end
 
