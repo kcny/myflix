@@ -1,0 +1,13 @@
+%section.sign_in.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      %form.sign_in
+      = bootstrap_form_tag url: '/login', html: {class: 'sign_in'} do |f|
+        %header
+          %h1 Sign In
+        %fieldset
+          = label_tag     :email, "Email Address"
+          = email_field_tag :email
+          = label_tag :password
+          = password_field_tag :password   
+          = f.submit "Sign In", class: 'btn btn-default'
