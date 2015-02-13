@@ -16,13 +16,12 @@ describe SessionsController do
   describe "POST create" do 
     context "with valid credentials" do
 
+    let(:anesu) { Fabricate :user }
     before do
-        anesu = Fabricate(:user)
         post :create, email: anesu.email, password: anesu.password 
     end 
+
       it "it logs user into the session" do
-        anesu = Fabricate(:user)
-        post :create, email: anesu.email, password: anesu.password 
         expect(session[:user_id]).to eq(anesu.id)
       end 
 

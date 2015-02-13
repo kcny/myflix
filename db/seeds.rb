@@ -9,7 +9,7 @@
 # Users
 
 
-User.create!(email: "zebron@example.com",
+zebron = User.create!(email: "zebron@example.com",
             full_name: "Zebron Zebra",
             password: "passpass")
 User.create!(email: "tafara@example.com",
@@ -126,7 +126,7 @@ Video.create!(title: "Futurama",
              small_cover_url: "/tmp/futurama.jpg",
              # large_cover_url: "/tmp/monk_large.jpg",
              category_id: 3) 
-Video.create!(title: "South Park",
+south_park = Video.create!(title: "South Park",
              description: "A fictional mountain town in Colorado.",
              small_cover_url: "/tmp/south_park.jpg",
              # large_cover_url: "/tmp/monk_large.jpg",
@@ -137,3 +137,8 @@ Video.create!(title: "Monk",
              # large_cover_url: "/tmp/monk_large.jpg",
              category_id: 3)
 
+# Reviews
+
+Review.create(user: zebron, video: south_park, rating: 4, content: " A very interesting adult animation!" )
+
+Review.create(user: zebron, video: south_park, rating: 2, content: "Very offensive adult animation!" )
