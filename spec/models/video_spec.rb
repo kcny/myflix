@@ -4,7 +4,8 @@ describe Video do
 
   it { should belong_to(:category)}
   it { should validate_presence_of(:title)}
-  it { should validate_presence_of (:description)}
+  it { should validate_presence_of(:description)}
+  it { should have_many(:reviews).order("created_at DESC")}
 
   describe "search by title" do 
     it "returns an empty array if there is no match." do 
@@ -23,15 +24,13 @@ describe Video do
       expect(Video.search_by_title("dela")).to eq([mandela])
     end
     it "returns an array of several video matches ordered by created_at." do
-      sarafina = Video.create(title: "Sarafina", description: "I like it!", 
-                                                      created_at: 1.day.ago)
+      sarafina = Video.create(title: "Sarafina", description: "I like it!")
 
       mandela = Video.create(title: "Mandela", description: "Political thriller!")
       expect(Video.search_by_title("a")).to eq([mandela, sarafina])
     end
     it "returns an empty array for a search with an empty string" do
-      sarafina = Video.create(title: "Sarafina", description: "I like it!", 
-                                                      created_at: 1.day.ago)
+      sarafina = Video.create(title: "Sarafina", description: "I like it!")
 
       mandela = Video.create(title: "Mandela", description: "Political thriller!")
       expect(Video.search_by_title("")).to eq([])
