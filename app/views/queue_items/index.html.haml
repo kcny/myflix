@@ -16,8 +16,7 @@
           %tbody
             - @queue_items.each do |qi|
               %tr
-                %td
-                  %td= qi.position
+                %td= qi.position
                 %td
                   = link_to qi.video_title, qi.video
                 %td
@@ -26,7 +25,7 @@
                 %td
                   = link_to qi.category_name, qi.category
                 %td
-                  = link_to "", method: :post do
+                  = link_to qi, method: :delete do
                     %i.glyphicon.glyphicon-remove
                     
         = button_to "Update Instant Queue", nil, class: "btn btn-default"
