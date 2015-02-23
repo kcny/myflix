@@ -30,6 +30,34 @@ describe QueueItem do
     end
   end
 
+  describe "#rating" do 
+    it "changes a review's rating, given a review" do 
+      video = Fabricate(:video)
+      user = Fabricate(:user)
+      review = Fabricate(:review, user: user, video: video)
+      queue_item = Fabricate(:queue_item, user: user, video: video,
+                                                          rating: 2)
+      queue_item.rating = 5
+      expect(Review.first.rating).to eq(5)
+    end
+    it "clears a review's rating, given a review" do 
+      video = Fabricate(:video)
+      user = Fabricate(:user)
+      review = Fabricate(:review, user: user, video: video)
+      queue_item = Fabricate(:queue_item, user: user, video: video,
+                                                          rating: 2)
+      queue_item.rating = nil
+      expect(Review.first.rating).to be_nil
+    end
+    it "creates a review and rating, in the absence of a review" do 
+        video = Fabricate(:video)
+        user = Fabricate(:user)
+        queue_item = Fabricate(:queue_item, user: user, video: video)
+        queue_item.rating = 4
+        expect(Review.first.rating).to eq(4)
+    end
+  end
+
   describe "#category_name" do 
     it "returns the video's categorical name" do
       category = Fabricate(:category, name: "action")

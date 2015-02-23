@@ -17,13 +17,13 @@
             %tbody
               - @queue_items.each do |qi|
                 %tr
-                  %td= hidden_field_tag "queue_items[][id]", qi.id
+                  = hidden_field_tag "queue_items[][id]", qi.id
                   %td= text_field_tag "queue_items[][position]", qi.position
                   %td
                     = link_to qi.video_title, qi.video
                   %td
                     = button_to "Play", nil, class: "btn btn-default"
-                  %td= qi.rating
+                  %td= select_tag "queue_items[][rating]", video_review_options(qi.rating), include_blank: true
                   %td
                     = link_to qi.category_name, qi.category
                   %td
