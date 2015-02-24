@@ -4,8 +4,8 @@
       %form.sign_in
       = bootstrap_form_tag url: '/login', html: {class: 'sign_in'} do |f|
         %header
-          %h1 Sign In
+          %h1 Login
         %fieldset
           = f.email_field :email, label: "Email Address"
           = f.password_field :password 
-          = f.submit "Sign In", class: 'btn btn-default'
+          = f.submit "Login", class: 'btn btn-default'
