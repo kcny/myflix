@@ -4,47 +4,47 @@ describe QueueItemsController do
   describe "GET index" do
     it "sets @queue_items to those of the logged in user" do
     anesu = Fabricate(:user)
-    session[:user_id] = anesu.id 
+    set_current_user(anesu)
     queue_item1 = Fabricate(:queue_item, user: anesu)
     queue_item2 = Fabricate(:queue_item, user: anesu)
     get :index
     expect(assigns(:queue_items)).to match_array([queue_item1, queue_item2])
   end
-    it "redirects the login page for unauthenticated users" do 
-      get :index
-      expect(response).to redirect_to login_path
+
+    it_behaves_like "requires login" do 
+      let(:action) { get :index}
     end
   end
 
   describe "POST create" do 
     it "redirects to the my queue page" do 
-      session[:user_id] = Fabricate(:user).id
+      set_current_user
       video = Fabricate(:video)
       post :create, video_id: video.id 
       expect(response).to redirect_to my_queue_path
     end
     it "create a new queue item" do
-      session[:user_id] = Fabricate(:user).id
+      set_current_user
       video = Fabricate(:video)
       post :create, video_id: video.id 
       expect(QueueItem.count).to eq(1)
     end
     it "creates queue item associated with video" do 
-      session[:user_id] = Fabricate(:user).id
+      set_current_user
       video = Fabricate(:video)
       post :create, video_id: video.id 
       expect(QueueItem.first.video).to eq(video)
     end
     it "creates queue item associated with logged in user" do
       anesu = Fabricate(:user)
-      session[:user_id] = anesu.id
+      set_current_user(anesu)
       video = Fabricate(:video)
       post :create, video_id: video.id 
       expect(QueueItem.first.user).to eq(anesu)
     end
     it "adds new videos to the end of the queue" do 
       anesu = Fabricate(:user)
-      session[:user_id] = anesu.id
+      set_current_user(anesu)
       mandela = Fabricate(:video)
       Fabricate(:queue_item, video: mandela, user: anesu)
       sarafina = Fabricate(:video)
@@ -54,7 +54,7 @@ describe QueueItemsController do
     end
       it "adds new videos to the end of the queue" do 
       anesu = Fabricate(:user)
-      session[:user_id] = anesu.id
+      set_current_user(anesu)
       mandela = Fabricate(:video)
       Fabricate(:queue_item, video: mandela, user: anesu)
       sarafina = Fabricate(:video)
@@ -62,22 +62,22 @@ describe QueueItemsController do
       sarafina_queue_item = QueueItem.where(video_id: mandela.id, user_id: anesu.id).first
       expect(anesu.queue_items.count).to eq(1)
     end
-    it "redirects unauthenticated users to the login page" do
-      post :create, video_id: 3
-      expect(response).to redirect_to login_path
+ 
+     it_behaves_like "requires login" do 
+      let(:action) { post :create, video_id: 3 }
     end
   end
 
     describe "DELETE destroy" do 
       it "redirects user to the my queue page" do
-        session[:user_id] = Fabricate(:user).id 
+        set_current_user 
         queue_item = Fabricate(:queue_item)
         delete :destroy, id: queue_item.id 
         expect(response).to redirect_to my_queue_path  
       end
       it "deletes the item in the queue" do
         anesu = Fabricate(:user) 
-        session[:user_id] = anesu.id 
+        set_current_user(anesu) 
         queue_item = Fabricate(:queue_item, user: anesu)
         delete :destroy, id: queue_item.id 
         expect(QueueItem.count).to eq(0)  
@@ -85,7 +85,7 @@ describe QueueItemsController do
 
       it "normalizes the remaining queue_items" do
         anesu = Fabricate(:user) 
-        session[:user_id] = anesu.id 
+        set_current_user(anesu) 
         queue_item1 = Fabricate(:queue_item, user: anesu, position: 1)
         queue_item2 = Fabricate(:queue_item, user: anesu, position: 2)
         
@@ -96,19 +96,26 @@ describe QueueItemsController do
       it "it only deletes queue items that belong to the user" do
         anesu = Fabricate(:user)
         busi = Fabricate(:user) 
-        session[:user_id] = anesu.id 
+        set_current_user(anesu) 
         queue_item = Fabricate(:queue_item, user: busi)
         delete :destroy, id: queue_item.id 
         expect(QueueItem.count).to eq(1)
       end   
 
-      it "redirect unauthenticated users to the login page" do 
-        delete :destroy, id: 3
-        expect(response).to redirect_to login_path
+      it_behaves_like "requires login" do 
+        let(:action) { delete :destroy, id: 3 }
       end
     end
 
     describe "POST update_queue_items" do
+
+      it_behaves_like "requires login" do 
+        let(:action) do 
+          post :update_queue, queue_items: [{id: 2, position: 3},
+                                                      {id: 4, position: 3}]
+        end
+      end 
+      
       context "with valid input" do
 
         let(:anesu) { Fabricate(:user) }
@@ -116,9 +123,8 @@ describe QueueItemsController do
         let(:queue_item1) { Fabricate(:queue_item, user: anesu, position: 1, video: video) }
         let(:queue_item2) { Fabricate(:queue_item, user: anesu, position: 2, video: video) }
 
-        before do 
-        session[:user_id] = anesu.id
-        end
+        before { set_current_user(anesu) }
+
 
         it "redirect to my queue page" do 
         post :update_queue, queue_items: [{id: queue_item1.id, position: 2},
@@ -146,9 +152,8 @@ describe QueueItemsController do
         let(:queue_item1) { Fabricate(:queue_item, user: anesu, position: 1, video: video) }
         let(:queue_item2) { Fabricate(:queue_item, user: anesu, position: 2, video: video) }
 
-        before do 
-        session[:user_id] = anesu.id
-        end
+        before { set_current_user(anesu) }
+        
 
         it "redirects to the my queue page" do 
           post :update_queue, queue_items: [{id: queue_item1.id, position: 4.5},
@@ -167,18 +172,11 @@ describe QueueItemsController do
                                     expect(queue_item1.reload.position).to eq(1)
             end
           end 
-  
-      context "with unauthenticated users" do 
-        it "redirect to login path" do 
-          post :update_queue, queue_items: [{id: 2, position: 3},
-                                           {id: 4, position: 3}]
-                      expect(response).to redirect_to login_path
-            end
-          end
+
       context "with queue items that do not belong to current user" do 
           it "does not change queue items" do 
             anesu = Fabricate(:user) 
-            session[:user_id] = anesu.id 
+            set_current_user(anesu) 
             busi = Fabricate(:user)
             video = Fabricate(:video) 
             queue_item1 = Fabricate(:queue_item, user: anesu, position: 1, video: video)
@@ -190,6 +188,7 @@ describe QueueItemsController do
         end
       end
     end
+
 
 
   
