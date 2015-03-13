@@ -11,6 +11,10 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
+  def show
+    
+  end
 end
 
 def user_params

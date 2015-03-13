@@ -41,5 +41,13 @@ describe UsersController do
        end                                      
     end
   end
+
+  describe "GET show" do
+   
+    it_behaves_like "requires sign in" do 
+      let(:action) {get :show, id: 1 }
+    end
+    it "sets @user"
+  end
 end
 
