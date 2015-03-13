@@ -23,6 +23,7 @@ describe UsersController do
         expect(response).to redirect_to login_path
       end
     end
+
     context "with invalid input" do 
 
       before do  post :create, user: { password: "passpass", full_name: "Zebron Zimuto"} 
@@ -34,20 +35,20 @@ describe UsersController do
 
       it "renders the :new template" do 
         expect(response).to render_template :new
-        end 
-
-      it "sets the @user" do 
-        expect(assigns(:user)).to be_instance_of(User)     
-       end                                      
+      end                                   
     end
   end
 
   describe "GET show" do
-   
-    it_behaves_like "requires sign in" do 
+    it_behaves_like "requires login" do 
       let(:action) {get :show, id: 1 }
     end
-    it "sets @user"
+    it "sets @user" do 
+      set_current_user
+      zebron = Fabricate(:user)
+      get :show, id: zebron.id 
+      expect(assigns(:user)).to eq(zebron)
+    end
   end
 end
 
