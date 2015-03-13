@@ -13,7 +13,7 @@ describe UsersController do
 
       before do
         post :create, user: Fabricate.attributes_for(:user) 
-     end
+      end
 
       it "creates the user" do
         expect(User.count).to eq(1)                                            
@@ -35,6 +35,10 @@ describe UsersController do
 
       it "renders the :new template" do 
         expect(response).to render_template :new
+      end
+
+      it "sets the @user" do 
+        expect(assigns(:user)).to be_instance_of(User)
       end                                   
     end
   end
@@ -43,6 +47,7 @@ describe UsersController do
     it_behaves_like "requires login" do 
       let(:action) {get :show, id: 1 }
     end
+
     it "sets @user" do 
       set_current_user
       zebron = Fabricate(:user)
