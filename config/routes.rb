@@ -1,6 +1,6 @@
 Myflix::Application.routes.draw do
   root to: 'pages#front'
-  get '/home',          to: 'videos#index'
+  get 'home',          to: 'videos#index'
 
 
   resources :videos, except: [:destroy] do 
@@ -11,7 +11,7 @@ Myflix::Application.routes.draw do
   end
   
   resources :users, only: [:show]
-  get '/people', to: 'relationships#index'
+  get 'people', to: 'relationships#index'
   resources :relationships, only: [:destroy]
 
   resources :categories, only: [:show]
@@ -22,9 +22,9 @@ Myflix::Application.routes.draw do
 
   get 'ui(/:action)', controller: 'ui'
   get 'register',       to: 'users#new'
-  get '/login',       to: 'sessions#new'
-  post '/login',        to: 'sessions#create'
-  get '/logout',        to: 'sessions#destroy'
+  get 'login',       to: 'sessions#new'
+  post 'login',        to: 'sessions#create'
+  get 'logout',        to: 'sessions#destroy'
   
   resources :users, only: [:create] 
   resources :sessions, ony: [:create]
