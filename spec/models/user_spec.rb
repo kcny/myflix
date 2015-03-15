@@ -13,12 +13,27 @@ describe "queued_vidoe?" do
     user = Fabricate(:user)
     video = Fabricate(:video)
     Fabricate(:queue_item, user: user, video: video)
-    user.queued_video?(video).should be_true
+    user.queued_video?(video).should be_truthy
     end
   it "returns false if user has not queued video" do 
       user = Fabricate(:user)
       video = Fabricate(:video)
-      user.queued_video?(video).should be_false
+      user.queued_video?(video).should be_falsy
+    end
+  end
+
+  describe "#follows?" do 
+    it "returns true if the user has a following relationship with another user" do 
+      anesu = Fabricate(:user)
+      busi = Fabricate(:user)
+      Fabricate(:relationship, leader: busi, follower: anesu)
+      expect(anesu.follows?(busi)).to be_truthy
+    end
+    it "returns false if the user does not have a following relationship with another user" do 
+      anesu = Fabricate(:user)
+      busi = Fabricate(:user)
+      Fabricate(:relationship, leader: anesu, follower: busi)
+      expect(anesu.follows?(busi)).to be_falsy
     end
   end
 end
