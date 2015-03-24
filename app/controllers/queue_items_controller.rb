@@ -19,13 +19,8 @@ class QueueItemsController < ApplicationController
 
   def update_queue
     begin
-
-      # refactor and move to private method
       update_queue_items
-
-      # refactor and move to private method
       normalize_queue_item_position
-
       rescue ActiveRecord::RecordInvalid
         flash[:error] = "Invalid entry. Please use integers only."
       end

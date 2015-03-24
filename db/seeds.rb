@@ -9,7 +9,10 @@
 # Users
 
 
-zebron = User.create!(email: "zebron@example.com",
+User.create!(email: "kudzai@example.com",
+            full_name: "Kudzai Nyandoro",
+            password: "passpass")
+User.create!(email: "zebron@example.com",
             full_name: "Zebron Zebra",
             password: "passpass")
 User.create!(email: "tafara@example.com",

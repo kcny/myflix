@@ -10,13 +10,12 @@ describe RelationshipsController do
       get :index
       expect(assigns(:relationships)).to eq([relationship])
     end
-
+    
     it_behaves_like "requires login" do
       let(:action) { get :index } 
     end
   end
-
-
+  
   describe "DELETE destroy" do
     it_behaves_like "requires login" do
       let(:action) { delete :destroy, id: 2 } 
@@ -79,14 +78,12 @@ describe RelationshipsController do
       set_current_user(anesu)
       Fabricate(:relationship, follower: anesu, leader: busi)
       post :create, leader_id: busi.id 
-
       expect(Relationship.count).to eq(1)
     end
     it "does not allow the following of onseself" do 
       busi = Fabricate(:user)
       set_current_user(busi)
       post :create, leader_id: busi.id 
-
       expect(Relationship.count).to eq(0)
     end
   end
