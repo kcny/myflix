@@ -9,7 +9,7 @@
 # Users
 
 
-User.create!(email: "kudzai@example.com",
+kudzai = User.create!(email: "kudzai@example.com",
             full_name: "Kudzai Nyandoro",
             password: "passpass")
 User.create!(email: "zebron@example.com",
@@ -142,6 +142,6 @@ Video.create!(title: "Monk",
 
 # Reviews
 
-Review.create(user: zebron, video: south_park, rating: 4, content: " A very interesting adult animation!" )
+Review.create(user: kudzai, video: south_park, rating: 4, content: " A very interesting adult animation!" )
 
-Review.create(user: zebron, video: south_park, rating: 2, content: "Very offensive adult animation!" )
+Review.create(user: kudzai, video: south_park, rating: 2, content: "Very offensive adult animation!" )
