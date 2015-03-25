@@ -28,4 +28,7 @@ Myflix::Application.routes.draw do
   
   resources :users, only: [:create] 
   resources :sessions, ony: [:create]
+
+  get 'forgot_password', to: 'forgot_passwords#new'
+  resources :forgot_passwords, only: [:create]
 end
