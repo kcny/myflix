@@ -8,6 +8,11 @@ it { should validate_uniqueness_of(:email) }
 it { should have_many(:queue_items).order("position") }
 it { should have_many(:reviews).order("created_at DESC") }
 
+it "generates a random token when a user is created" do
+  anesu = Fabricate(:user)
+  expect(anesu.token).to be_present 
+end
+
 describe "queued_vidoe?" do 
   it "returns true when user queued video" do 
     user = Fabricate(:user)
