@@ -9,21 +9,19 @@ describe ForgotPasswordsController do
       end
       it "shows an error message" do 
         post :create, email: ''
-        expect(flash[:error]).to eq("Email cannot be blank.")
+        expect(flash[:danger]).to eq("Email cannot be blank.")
       end
     end
     context "with existing email" do 
       it "should redirect to a forgot password information page" do
-      Fabricate(:user, email: "hoza@example.com")  
-      post :create, email: "hoza@example.com"
-      expect(response).to redirect_to forgot_password_confirmation_path 
+        Fabricate(:user, email: "hoza@example.com")  
+        post :create, email: "hoza@example.com"
+        expect(response).to redirect_to forgot_password_confirmation_path 
       end 
       it "sends out an email to user's email address." do
-      Fabricate(:user, email: "hoza@example.com")  
-      post :create, email: "hoza@example.com"
-      expect(ActionMailer::Base.deliveries.last.to).to eq(["hoza@example.com"])
-
-
+        Fabricate(:user, email: "hoza@example.com")  
+        post :create, email: "hoza@example.com"
+        expect(ActionMailer::Base.deliveries.last.to).to eq(["hoza@example.com"])
       end
     end
     context "with non-existing email" do
@@ -33,7 +31,7 @@ describe ForgotPasswordsController do
       end 
       it "shows an error message" do 
         post :create, email: 'digger@example.com'
-        expect(flash[:error]).to eq("User email does not exist.")
+        expect(flash[:danger]).to eq("User email does not exist.")
       end
     end
   end 
