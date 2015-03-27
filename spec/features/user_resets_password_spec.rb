@@ -19,7 +19,5 @@ feature 'User reset password' do
     click_button "Login"
 
     expect(page).to have_content("Welcome, #{anesu.full_name}")
-
-
   end
 end
