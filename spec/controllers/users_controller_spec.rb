@@ -89,9 +89,9 @@ describe "GET show" do
     it "sets @user with recipient's email" do 
       invitation = Fabricate(:invitation)
       get :new_with_invitation_token, token: invitation.token
-      expect(assigns(:user)).to eq(invitation.recipient_email)
+      expect(assigns(:user).email).to eq(invitation.recipient_email)
     end
-    
+
     it "redirects invalid tokens to the expired token page." do 
         invitation = Fabricate(:invitation)
         get :new_with_invitation_token, token: 'xyzabc123'
