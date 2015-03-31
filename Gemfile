@@ -12,6 +12,7 @@ gem 'bootstrap_form'
 gem 'bcrypt'
 gem 'pg'
 gem 'fabrication'
+gem 'sidekiq'
 
 group :development do
   gem 'thin'
