@@ -17,7 +17,8 @@ feature 'User reset password' do
     fill_in "Email Address", with: anesu.email
     fill_in "Password", with: "new_password"
     click_button "Login"
-
     expect(page).to have_content("Welcome, #{anesu.full_name}")
+
+    clear_email
   end
 end

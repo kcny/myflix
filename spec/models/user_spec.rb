@@ -49,7 +49,11 @@ describe "queued_vidoe?" do
       anesu.follow(busi)
       expect(anesu.follows?(busi)).to be_truthy
       end
-    it "does not follow self" 
+    it "does not follow self" do 
+      busi = Fabricate(:user)
+      busi.follow(busi)
+      expect(busi.follows?(busi)).to be_falsy
+    end
   end
 end
 

@@ -33,9 +33,27 @@ describe "POST create" do
       jabu = User.where(email: 'jabu@example.com').first
       expect(jabu.follows?(anesu)).to be_truthy                                   
     end
-    it "makes the inviter follow the user"
-    it "expires the invitation upon acceptance"
+    it "makes the inviter follow the user" do 
+      anesu = Fabricate(:user)
+      invitation = Fabricate(:invitation, inviter: anesu,
+                       recipient_email: 'jabu@example.com')
+      post :create, user: {email: 'jabu@example.com', password: "password",
+                                                  full_name: "Jabu Moyo"}, 
+                                        invitation_token: invitation.token
+      jabu = User.where(email: 'jabu@example.com').first
+      expect(anesu.follows?(jabu)).to be_truthy                                   
     end
+    it "expires the invitation upon acceptance" do 
+      anesu = Fabricate(:user)
+      invitation = Fabricate(:invitation, inviter: anesu,
+                       recipient_email: 'jabu@example.com')
+      post :create, user: {email: 'jabu@example.com', password: "password",
+                                                  full_name: "Jabu Moyo"}, 
+                                        invitation_token: invitation.token
+      jabu = User.where(email: 'jabu@example.com').first
+      expect(Invitation.first.token).to be_nil                                 
+    end
+  end
 
   context "with invalid input" do 
 
