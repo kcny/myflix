@@ -8,8 +8,8 @@
           = f.email_field   :email, label: "Email Address"
           = f.password_field :password , lable: "Password"     
           = f.text_field :full_name, label: "Full Name"
-          = f.submit "Register"
-          = hidden_field_tag :invitation_token,
+          = hidden_field_tag :invitation_token, @invitation_token
         %fieldset.actions.control-group
           .controls
-            %input(type="submit" value="Sign Up" class="btn")  
+            = f.submit "Sign Up", class: "btn btn-default"
+            
