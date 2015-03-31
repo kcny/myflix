@@ -5,15 +5,15 @@ deployment:
   production:
     branch: master
     commands:
-      - heroku maintenance:on --app production_kudzai
-      - heroku pg:backups capture --app production_kudzai
-      - git push git@heroku.com:production_kudzai.git $CIRCLE_SHA1:refs/heads/master
-      - heroku run rake db:migrate --app production_kudzai
-      - heroku maintenance:off --app production_kudzai
+      - heroku maintenance:on --app kudzai
+      - heroku pg:backups capture --app kudzai
+      - git push git@heroku.com:kudzai.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app kudzai
+      - heroku maintenance:off --app kudzai
   staging:
     branch: staging
     commands:
-      - heroku maintenance:on --app staging_kudzai
-      - git push git@heroku.com:staging_kudzai.git $CIRCLE_SHA1:refs/heads/master
-      - heroku run rake db:migrate --app staging_kudzai
-      - heroku maintenance:off --app staging_kudzai
+      - heroku maintenance:on --app kudzai-staging
+      - git push git@heroku.com:kudzai-staging.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app kudzai-staging
+      - heroku maintenance:off --app kudzai-staging
