@@ -11,7 +11,7 @@ def login(a_user=nil)
 end
 
 def logout
-  visit_logout_path
+  visit logout_path
 end
 
 def click_on_video_on_home_page(video)
