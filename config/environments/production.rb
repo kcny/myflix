@@ -30,4 +30,5 @@ Myflix::Application.configure do
     :domain         => 'kudzai.heroku.com',
     :authentication => :plain,
   }
+            
 end
