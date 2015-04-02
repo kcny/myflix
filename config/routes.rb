@@ -3,7 +3,7 @@ Myflix::Application.routes.draw do
   get 'home',          to: 'videos#index'
 
 
-  resources :videos, except: [:destroy] do 
+  resources :videos, only: [:show] do 
     collection do
       post :search, to: "videos#search"
     end
@@ -11,7 +11,7 @@ Myflix::Application.routes.draw do
   end
   
   namespace :admin do 
-    resources :videos, only: [:new]
+    resources :videos, only: [:new, :create]
   end
 
   resources :users, only: [:show]
