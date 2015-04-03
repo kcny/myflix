@@ -6,7 +6,22 @@ class Admin::VideosController < ApplicationController
     @video = Video.new
   end
 
+  def create
+    @video = Video.new(video_params)
+    if @video.save
+      flash[:success] = "You've successfully added '#{@video.title}' to your video collection."
+      redirect_to new_admin_video_path
+    else
+      flash[:danger] = "Action denied. Please check the error messages."
+      render :new
+    end
+  end
+
   private
+
+ def video_params
+  params.require(:video).permit(:title, :small_cover_url, :large_cover_url, :description, :category_id)
+end
 
   def require_admin
     if !current_user.admin?

@@ -14,7 +14,9 @@ gem 'pg'
 gem 'fabrication'
 gem 'sidekiq'
 gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
-
+# gem 'carrierwave'
+# gem 'fog'
+# gem 'mini-magic'
 
 group :development do
   gem 'thin'
