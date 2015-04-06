@@ -44,100 +44,100 @@ Category.create!(name: "Comedy")
  
 Video.create!(title: "Monk",
              description: "Adrian expereinces execessive compulsive disorder after the death of his wife.",
-             small_cover_url: "/tmp/monk.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/monk.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 1) 
 Video.create!(title: "South Park",
              description: "A fictional mountain town in Colorado.",
-             small_cover_url: "/tmp/south_park.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/south_park.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 1) 
 Video.create!(title: "Family Guy",
              description: "Adult animation, try it out.",
-             small_cover_url: "/tmp/family_guy.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/family_guy.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 1)  
 Video.create!(title: "Futurama",
              description: "Critically acclaimed, nominated 17 Annie Awards and 12 Emmy Awards, you might like it..",
-             small_cover_url: "/tmp/futurama.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/futurama.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 1)
  
 Video.create!(title: "Monk",
              description: "Adrian expereinces execessive compulsive disorder after the death of his wife.",
-             small_cover_url: "/tmp/monk.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/monk.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 1) 
 Video.create!(title: "South Park",
              description: "A fictional mountain town in Colorado.",
-             small_cover_url: "/tmp/south_park.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/south_park.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 1) 
 
       # Adult Animation
 
 Video.create!(title: "South Park",
              description: "A fictional mountain town in Colorado USA.",
-             small_cover_url: "/tmp/south_park.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/south_park.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 2)  
 Video.create!(title: "Monk",
              description: "Adrian expereinces execessive compulsive disorder after the death of his wife.",
-             small_cover_url: "/tmp/monk.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/monk.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 2)  
 Video.create!(title: "Family Guy",
              description: "Adult animation, try it out.",
-             small_cover_url: "/tmp/family_guy.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/family_guy.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 2)  
 Video.create!(title: "Futurama",
              description: "Critically acclaimed, nominated 17 Annie Awards and 12 Emmy Awards, you might like it..",
-             small_cover_url: "/tmp/futurama.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/futurama.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 2)
 Video.create!(title: "South Park",
              description: "A fictional mountain town in Colorado USA.",
-             small_cover_url: "/tmp/south_park.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/south_park.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 2)  
 Video.create!(title: "Monk",
              description: "Adrian expereinces execessive compulsive disorder after the death of his wife.",
-             small_cover_url: "/tmp/monk.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/monk.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 2) 
 
       # Action
 
 Video.create!(title: "South Park",
              description: "A fictional mountain town in Colorado.",
-             small_cover_url: "/tmp/south_park.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/south_park.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 3)  
 Video.create!(title: "Monk",
              description: "Adrian expereinces execessive compulsive disorder after the death of his wife.",
-             small_cover_url: "/tmp/monk.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/monk.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 3)  
 Video.create!(title: "Family Guy",
              description: "Adult animation, try it out.",
-             small_cover_url: "/tmp/family_guy.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/family_guy.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 3)  
 Video.create!(title: "Futurama",
              description: "Critically acclaimed, nominated 17 Annie Awards and 12 Emmy Awards, you might like it..",
-             small_cover_url: "/tmp/futurama.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/futurama.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 3) 
 south_park = Video.create!(title: "South Park",
              description: "A fictional mountain town in Colorado.",
-             small_cover_url: "/tmp/south_park.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/south_park.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 3)  
 Video.create!(title: "Monk",
              description: "Adrian expereinces execessive compulsive disorder after the death of his wife.",
-             small_cover_url: "/tmp/monk.jpg",
-             # large_cover_url: "/tmp/monk_large.jpg",
+             small_cover: "/tmp/monk.jpg",
+             # large_cover: "/tmp/monk_large.jpg",
              category_id: 3)
 
 # Reviews
