@@ -19,7 +19,7 @@ feature "Admin add new video" do
     login
 
     visit video_path(Video.first)
-    expect(page).to have_selector("img[src='/uploads/monk_large.jpg']")
+    expect(page).to have_selector("img[src*='monk_large.jpg']")
     expect(page).to have_selector("a[href='http://www.example.com/my_video.mp4']")
   end
 end
