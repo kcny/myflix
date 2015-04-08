@@ -14,7 +14,9 @@ gem 'pg'
 gem 'fabrication'
 gem 'sidekiq'
 gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
-
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
 
 group :development do
   gem 'thin'
@@ -38,7 +40,7 @@ group :test do
   gem 'capybara-email'
 end
 
-group :production do
+group :production, :staging do
   gem 'rails_12factor'
   gem 'unicorn'
 end
