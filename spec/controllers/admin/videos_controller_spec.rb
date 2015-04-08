@@ -11,15 +11,15 @@ describe Admin::VideosController do
     it "sets the @video to a new video" do 
       set_current_admin
       get :new
-      expect(assigns(:video)).to be_instance_of Video
+      expect(assigns(:video)).to be_a_new(Video)
       expect(assigns(:video)).to be_new_record 
     end
-    # it "redirects the regular user the the home path" do
-    #   set_current_user
-    #   get :new
-    #   expect(response).to redirect_to home_path
+    it "redirects the regular user the the home path" do
+      set_current_user
+      get :new
+      expect(response).to redirect_to home_path
 
-    # end
+    end
     it "sets the flash error message for the regular user" do
       set_current_user
       get :new
