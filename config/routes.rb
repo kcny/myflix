@@ -12,6 +12,7 @@ Myflix::Application.routes.draw do
   
   namespace :admin do 
     resources :videos, only: [:new, :create]
+    resources :payments, only: [:new, :create]
   end
 
   resources :users, only: [:show]
@@ -19,7 +20,8 @@ Myflix::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   resources :categories, only: [:show]
-  resources :queue_items, only: [:create, :destroy]
+  resources :queue_items, only: [:create, :destroy]  
+
   post 'update_queue', to: 'queue_items#update_queue'
 
   get 'my_queue', to: 'queue_items#index'
