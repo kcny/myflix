@@ -6,7 +6,21 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+
+    if @user.valid?
+      Stripe.api_key = ENV['STRIP_API_KEY']
+      token = params[:stripeToken]
+      begin
+        charge = Stripe::Charge.create(
+          :amount => 999,
+          :currency => "usd",
+          :source => token,
+          :description => "My Flix Registration Fee"
+        )
+      rescue Stripe::CardError => e
+        flash[:danger] = e.message
+      end
+      @user.save
       handle_invitation
       AppMailer.send_welcome_email(@user).deliver
       redirect_to login_path, notice: "You've successfully created your account!"
