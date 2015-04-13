@@ -1,7 +1,13 @@
+= content_for :head do 
+  %script(type="text/javascript" src="https://js.stripe.com/v2/")
+    :javascript
+      stripe.setPublishableKey("#{ENV['STRIPE_PUBLISHABLE_KEY']}");
+    = javascript_include_tag "payment"  
+
 %section.register.container
   .row
     .col-sm-10.col-sm-offset-1
-      = bootstrap_form_for @user, layout: :horizontal, label_col: 'col-2', control_col: 'col-6', id: "payment-form" do |f|
+      = bootstrap_form_for @user, layout: :horizontal, label_col: 'col-2', control_col: 'col-6', html: { id: "payment-form" } do |f|
         %header
           %h1 Register
         %fieldset
@@ -10,7 +16,7 @@
           = f.text_field :full_name, label: "Full Name"
           = hidden_field_tag :invitation_token, @invitation_token
         %fieldset.credit_card
-          %span.payment_errors
+          %span.payment-errors
           .form-group
             %label.control-label.col-sm-2 Credit Card Number
             .col-sm-6
