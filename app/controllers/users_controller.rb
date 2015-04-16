@@ -7,9 +7,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
       if @user.save
-      #charge_with_stripe  
+      #charge_with_stripe    
       handle_invitation
-      AppMailer.send_welcome_email(@user).deliver
+        AppMailer.send_welcome_email(@user).deliver # Remove this line if you're using the 'charge_with_stripe' method above. 
       redirect_to login_path, notice: "You've successfully created your account!"
     else
       render :new
@@ -59,11 +59,8 @@ private
           :source => token,
           :description => "Registration Fee for #{@user.full_name}"
         )
-      flash[:success] = "Thank you for your payment."  
-      redirect_to login_path
-      rescue Stripe::CardError => e
-        flash[:danger] = e.message
-      redirect_to login_path  
+      AppMailer.send_welcome_email(@user).deliver  
+      redirect_to login_path 
       end
     end  
   end
