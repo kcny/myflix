@@ -7,10 +7,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
       if @user.save
-      #charge_with_stripe    
-      handle_invitation
-        AppMailer.send_welcome_email(@user).deliver # Remove this line if you're using the 'charge_with_stripe' method above. 
-      redirect_to login_path, notice: "You've successfully created your account!"
+        handle_invitation
+        charge_with_stripe    
     else
       render :new
     end
@@ -41,7 +39,7 @@ private
 
   def handle_invitation
     if params[:invitation_token].present?
-      invitation = Invitation.where(token: params[:invitation_token]).first
+      invitation = Invitation.where(token: params[:invitation_token])
       @user.follow(invitation.inviter)
       invitation.inviter.follow(@user)
       invitation.update_column(:token, nil)
@@ -49,9 +47,7 @@ private
 
   def charge_with_stripe
       Stripe.api_key = ENV['STRIPE_SECRET_KEY']
-
       token = params[:stripeToken]
-
       begin
         charge = Stripe::Charge.create(
           :amount => 999,
