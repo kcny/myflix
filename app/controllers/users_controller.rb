@@ -8,12 +8,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
       if @user.save
         handle_invitation
-        charge_with_stripe    
-    else
+        charge_with_stripe
+      else
       render :new
     end
   end
-
+  
   def show
     @user = User.find(params[:id])
   end
@@ -44,19 +44,18 @@ private
       invitation.inviter.follow(@user)
       invitation.update_column(:token, nil)
     end
+  end
 
   def charge_with_stripe
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
-      token = params[:stripeToken]
-      begin
-        charge = Stripe::Charge.create(
-          :amount => 999,
-          :currency => "usd",
-          :source => token,
-          :description => "Registration Fee for #{@user.full_name}"
-        )
+    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+      charge = Stripe::Charge.create(
+        :amount => 999,
+        :currency => "usd",
+        :card => params[:stripeToken],
+        :description => "Registration Fee for #{@user.full_name}"
+      )
       AppMailer.send_welcome_email(@user).deliver  
-      redirect_to login_path 
-      end
-    end  
+      redirect_to login_path    
+    end
   end
+end
