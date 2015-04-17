@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       render :new
     end
   end
-  
+
   def show
     @user = User.find(params[:id])
   end
@@ -50,12 +50,13 @@ private
     Stripe.api_key = ENV['STRIPE_SECRET_KEY']
       charge = Stripe::Charge.create(
         :amount => 999,
-        :currency => "usd",
         :card => params[:stripeToken],
         :description => "Registration Fee for #{@user.full_name}"
       )
       AppMailer.send_welcome_email(@user).deliver  
       redirect_to login_path    
     end
-  end
-end
+  
+
+
+
