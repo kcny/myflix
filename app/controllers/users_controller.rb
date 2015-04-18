@@ -55,7 +55,7 @@ private
       )
       AppMailer.send_welcome_email(@user).deliver  
       redirect_to login_path    
-    end
+  end
   
 
 

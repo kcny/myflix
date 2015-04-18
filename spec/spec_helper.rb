@@ -6,6 +6,8 @@ require 'capybara'
 require 'capybara/email/rspec'
 require 'sidekiq/testing/inline'
 
+Capybara.server_port = 52662
+
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 VCR.configure do |c|
