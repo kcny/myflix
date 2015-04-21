@@ -6,10 +6,17 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-      if @user.save
-        handle_invitation
-        charge_with_stripe
-      else
+    if @user.save
+      handle_invitation
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+      StripeWrapper::Charge.create(
+        :amount => 999,
+        :card => params[:stripeToken],
+        :description => "Registration Fee for #{@user.full_name}"
+      )
+      AppMailer.send_welcome_email(@user).deliver  
+      redirect_to login_path    
+    else
       render :new
     end
   end
@@ -46,16 +53,8 @@ private
     end
   end
 
-  def charge_with_stripe
-    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
-      charge = Stripe::Charge.create(
-        :amount => 999,
-        :card => params[:stripeToken],
-        :description => "Registration Fee for #{@user.full_name}"
-      )
-      AppMailer.send_welcome_email(@user).deliver  
-      redirect_to login_path    
-  end
+
+ 
   
 
 
