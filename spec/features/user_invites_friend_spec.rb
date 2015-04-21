@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'User invites friend' do
-  scenario 'User successfully invites friend and invation is accepted' do 
+  scenario 'User successfully invites friend and invation is accepted', { js: true, vcr: true } do 
     anesu = Fabricate(:user)
     login(anesu)
 
@@ -29,6 +29,10 @@ feature 'User invites friend' do
     current_email.click_link "Accept this invitation"
     fill_in "Password", with: "password"
     fill_in "Full Name", with: "Jabu Dube"
+    fill_in "Credit Card Number", with: "4242424242424242"
+    fill_in "Security Code", with: "123"
+    select "4 - April", from: "date_month"
+    select "2019", from: "date_year"
     click_button "Sign Up"
   end
 

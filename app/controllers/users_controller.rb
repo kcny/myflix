@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def new_with_invitation_token
-    invitation = Invitation.where(token: params[:token]).first
+    invitation = Invitation.find_by(token: params[:token])
     if invitation
       @user = User.new(email: invitation.recipient_email)
       @invitation_token = invitation.token
@@ -46,7 +46,7 @@ private
 
   def handle_invitation
     if params[:invitation_token].present?
-      invitation = Invitation.where(token: params[:invitation_token])
+      invitation = Invitation.find_by(token: params[:invitation_token])
       @user.follow(invitation.inviter)
       invitation.inviter.follow(@user)
       invitation.update_column(:token, nil)
