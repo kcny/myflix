@@ -12,10 +12,11 @@ class UsersController < ApplicationController
         :card => params[:stripeToken],
         :description => "Registration Fee for #{@user.full_name}"
       )
-      if charge.successfull?
+      if charge.successful?
         @user.save
         handle_invitation  
-        AppMailer.send_welcome_email(@user).deliver  
+        AppMailer.send_welcome_email(@user).deliver
+        flash[:success] = "Thanks for registering, please log in and enjoy!"  
         redirect_to login_path
       else
         flash[:error] = charge.error_message
