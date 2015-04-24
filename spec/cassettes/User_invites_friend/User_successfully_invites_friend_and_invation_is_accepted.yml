@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.stripe.com/v1/charges
     body:
       encoding: US-ASCII
-      string: amount=999&currency=usd&card=tok_15ukSNHHAbUnMwm5SvaqmO3w&description=Registration%20Fee%20for%20Jabu%20Dube
+      string: amount=999&currency=usd&card=tok_15v6x3HHAbUnMwm5mYGD7Gtk&description=Registration%20Fee%20for%20Jabu%20Dube
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - Stripe/v1 RubyBindings/1.20.4
       Authorization:
-      - Bearer sk_test_FQCt8veZeSaSv0dxVZAqMKKy
+      - Bearer pk_test_UIGVF6j09BZAopPPUCPWJkgu
       Content-Type:
       - application/x-www-form-urlencoded
       X-Stripe-Client-User-Agent:
@@ -25,17 +25,17 @@ http_interactions:
       - '108'
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
     headers:
       Server:
       - nginx
       Date:
-      - Thu, 23 Apr 2015 13:33:32 GMT
+      - Fri, 24 Apr 2015 13:34:41 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '1395'
+      - '247'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
@@ -49,72 +49,18 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_u9xKNFnR8QeqVeld
+      - req_kH8jvj44BF4IYLTW
       Stripe-Version:
       - '2015-04-07'
-      Strict-Transport-Security:
-      - max-age=31556926; includeSubDomains
     body:
       encoding: UTF-8
       string: |
         {
-          "id": "ch_15ukSOHHAbUnMwm5kbag5vyk",
-          "object": "charge",
-          "created": 1429796012,
-          "livemode": false,
-          "paid": true,
-          "status": "succeeded",
-          "amount": 999,
-          "currency": "usd",
-          "refunded": false,
-          "source": {
-            "id": "card_15ukSNHHAbUnMwm5ievFLVEk",
-            "object": "card",
-            "last4": "4242",
-            "brand": "Visa",
-            "funding": "credit",
-            "exp_month": 4,
-            "exp_year": 2019,
-            "fingerprint": "SuiyRbzExKOVUyWW",
-            "country": "US",
-            "name": null,
-            "address_line1": null,
-            "address_line2": null,
-            "address_city": null,
-            "address_state": null,
-            "address_zip": null,
-            "address_country": null,
-            "cvc_check": "pass",
-            "address_line1_check": null,
-            "address_zip_check": null,
-            "dynamic_last4": null,
-            "metadata": {},
-            "customer": null
-          },
-          "captured": true,
-          "balance_transaction": "txn_15ukSOHHAbUnMwm5Ei5e3YMN",
-          "failure_message": null,
-          "failure_code": null,
-          "amount_refunded": 0,
-          "customer": null,
-          "invoice": null,
-          "description": "Registration Fee for Jabu Dube",
-          "dispute": null,
-          "metadata": {},
-          "statement_descriptor": null,
-          "fraud_details": {},
-          "receipt_email": null,
-          "receipt_number": null,
-          "shipping": null,
-          "application_fee": null,
-          "refunds": {
-            "object": "list",
-            "total_count": 0,
-            "has_more": false,
-            "url": "/v1/charges/ch_15ukSOHHAbUnMwm5kbag5vyk/refunds",
-            "data": []
+          "error": {
+            "type": "invalid_request_error",
+            "message": "This API call cannot be made with a publishable API key. Please use a secret API key. You can find a list of your API keys at https://dashboard.stripe.com/account/apikeys."
           }
         }
     http_version: 
-  recorded_at: Thu, 23 Apr 2015 13:33:32 GMT
+  recorded_at: Fri, 24 Apr 2015 13:34:41 GMT
 recorded_with: VCR 2.9.3
