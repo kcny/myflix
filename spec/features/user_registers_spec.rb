@@ -12,25 +12,47 @@ feature 'User registers',{ js: true, vcr: true } do
 
     expect(page).to have_content("Thanks for registering, please log in and enjoy!")
   end
+  
   scenario 'with valid user info and invalid card' do 
   fill_in_valid_user_info
   fill_in_invalid_card
   click_button "Sign Up"
   expect(page).to have_content("This card number looks invalid")          
   end 
+  
   scenario 'with valid user info and declined card' do
   fill_in_declined_card
   click_button "Sign Up"
   expect(page).to have_content("Your card was declined.")
   end 
+  
   scenario 'with invalid user info and valid card' do
   fill_in_invalid_user_info
   fill_in_valid_card
   click_button "Sign Up"
-  expect(page).to have_content("You infomation is invalide.  Please check the error messages and try again.") 
+  expect(page).to have_content("You infomation is invalid.  Please check the error messages and try again.") 
   end 
-  scenario 'with valid user info and invalid card' 
-  scenario 'with invalid user info and invalid card'
+  
+  scenario 'with valid user info and invalid card' do
+    fill_in_invalid_user_info
+    fill_in_valid_card
+    click_button "Sign Up"
+    expect(page).to have_content("This card number looks invalid")
+  end
+  
+  scenario 'with invalid user info and invalid card' do
+    fill_in_invalid_user_info
+    fill_in_invalid_card
+    click_button "Sign Up"
+    expect(page).to have_content("You infomation is invalide.  Please check the error messages and try again.") 
+  end
+  
+  scenario 'with invalid user info and declined card' do
+    fill_in_invalid_user_info
+    fill_in_declined_card
+    click_button "Sign Up"
+    expect(page).to have_content("Your card was declined.")
+  end
 
   def fill_in_valid_user_info
     fill_in "Email Address", with: "jabu@example.com"
