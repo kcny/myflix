@@ -37,6 +37,7 @@ feature 'User invites friend' do
   end
 
   def friend_logs_in
+    sleep 2
     fill_in "Email Address", with: "jabu@example.com"
     fill_in "Password", with: "password"
     click_button "Login"
