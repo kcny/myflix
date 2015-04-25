@@ -12,6 +12,7 @@ describe "POST create" do
   context "with valid input" do
 
     before do
+      StripeWrapper::Charge.stub(:create)
       post :create, user: Fabricate.attributes_for(:user) 
     end
 
@@ -73,7 +74,11 @@ describe "POST create" do
     end                                   
   end
 
-  context "email sending" do 
+  context "email sending" do
+
+    before do 
+      StripeWrapper::Charge.stub(:create)
+    end 
 
     after { ActionMailer::Base.deliveries.clear}
       
