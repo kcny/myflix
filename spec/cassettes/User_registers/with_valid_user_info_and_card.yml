@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.stripe.com/v1/charges
     body:
       encoding: US-ASCII
-      string: amount=999&currency=usd&card=tok_15v7W8HHAbUnMwm5USrmwOYK&description=Registration%20Fee%20for%20Jabu%20Dube
+      string: amount=999&currency=usd&card=tok_15vKDzHHAbUnMwm55uZaBi1L&description=Registration%20Fee%20for%20Jabu%20Dube
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 24 Apr 2015 14:10:57 GMT
+      - Sat, 25 Apr 2015 03:45:04 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_R5W5gk2SX6vGuvWO
+      - req_63CjNGzM1dmkTbMW
       Stripe-Version:
       - '2015-04-07'
       Strict-Transport-Security:
@@ -58,9 +58,9 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "ch_15v7W9HHAbUnMwm5dCVmM0N6",
+          "id": "ch_15vKE0HHAbUnMwm5eOn8QiBD",
           "object": "charge",
-          "created": 1429884657,
+          "created": 1429933504,
           "livemode": false,
           "paid": true,
           "status": "succeeded",
@@ -68,7 +68,7 @@ http_interactions:
           "currency": "usd",
           "refunded": false,
           "source": {
-            "id": "card_15v7W8HHAbUnMwm5lz99Gkrq",
+            "id": "card_15vKDzHHAbUnMwm5tDwtsViN",
             "object": "card",
             "last4": "4242",
             "brand": "Visa",
@@ -92,7 +92,7 @@ http_interactions:
             "customer": null
           },
           "captured": true,
-          "balance_transaction": "txn_15v7W9HHAbUnMwm5D7BMZ3LU",
+          "balance_transaction": "txn_15vKE0HHAbUnMwm5SWCyXkr9",
           "failure_message": null,
           "failure_code": null,
           "amount_refunded": 0,
@@ -111,10 +111,10 @@ http_interactions:
             "object": "list",
             "total_count": 0,
             "has_more": false,
-            "url": "/v1/charges/ch_15v7W9HHAbUnMwm5dCVmM0N6/refunds",
+            "url": "/v1/charges/ch_15vKE0HHAbUnMwm5eOn8QiBD/refunds",
             "data": []
           }
         }
     http_version: 
-  recorded_at: Fri, 24 Apr 2015 14:10:57 GMT
+  recorded_at: Sat, 25 Apr 2015 03:45:04 GMT
 recorded_with: VCR 2.9.3

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UsersController do
+describe UsersController, :vcr do
   describe "GET new" do
     it "sets @user" do 
       get :new 
