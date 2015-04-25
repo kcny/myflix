@@ -13,18 +13,20 @@ describe "POST create" do
       let(:charge) { double(:charge, successful?: true) }
 
     before do
-      post :create, user: Fabricate.attributes_for(:user)
       StripeWrapper::Charge.should_receive(:create).and_return(charge)
+      
     end
 
     it "creates the user" do
+      post :create, user: Fabricate.attributes_for(:user)
       expect(User.count).to eq(1)                                            
     end
 
     it "redirects to the login page" do
+      post :create, user: Fabricate.attributes_for(:user)
       expect(response).to redirect_to login_path
     end
-
+  
     it "makes the user follow the inviter" do 
       anesu = Fabricate(:user)
       invitation = Fabricate(:invitation, inviter: anesu,
@@ -35,6 +37,7 @@ describe "POST create" do
       jabu = User.where(email: 'jabu@example.com').first
       expect(jabu.follows?(anesu)).to be_truthy                                   
     end
+ 
     it "makes the inviter follow the user" do 
       anesu = Fabricate(:user)
       invitation = Fabricate(:invitation, inviter: anesu,
@@ -45,6 +48,7 @@ describe "POST create" do
       jabu = User.where(email: 'jabu@example.com').first
       expect(anesu.follows?(jabu)).to be_truthy                                   
     end
+ 
     it "expires the invitation upon acceptance" do 
       anesu = Fabricate(:user)
       invitation = Fabricate(:invitation, inviter: anesu,
@@ -59,22 +63,23 @@ describe "POST create" do
 
   context " with valid personal and declided card" do
     it "does not create a new user record" do
-      charge = double(:charge, successfull?: false, error_message: "Your card was declined") 
+      charge = double(:charge, successful?: false, error_message: "Your card was declined") 
       StripeWrapper::Charge.should_receive(:create).and_return(charge)
       post :create, user: Fabricate.attributes_for(:user), stripeToken: '0246810'
       expect(User.count).to eq(0)
     end
+    
     it "renders the new template" do 
-      charge = double(:charge, successfull?: false) 
+      charge = double(:charge, successful?: false, error_message: "Your card was declined.") 
       StripeWrapper::Charge.should_receive(:create).and_return(charge)
       post :create, user: Fabricate.attributes_for(:user), stripeToken: '0246810'
       expect(response).to render_template :new
     end
     it "sets the flash error message" do 
-      charge = double(:charge, successfull?: false, error_message: "Your card was declined.") 
+      charge = double(:charge, successful?: false, error_message: "Your card was declined.") 
       StripeWrapper::Charge.should_receive(:create).and_return(charge)
       post :create, user: Fabricate.attributes_for(:user), stripeToken: '0246810'
-      expect(flash[:error]).to be_present
+      expect(flash[:danger]).to be_present
     end
   end
 
@@ -106,7 +111,7 @@ describe "POST create" do
   end
 
   context "email sending" do
-     let(:charge) { double(:charge, successfull?: true) }
+     let(:charge) { double(:charge, successful?: true) }
     before do 
       StripeWrapper::Charge.should_receive(:create).and_return(charge)
     end 
