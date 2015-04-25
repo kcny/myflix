@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.stripe.com/v1/charges
     body:
       encoding: US-ASCII
-      string: amount=999&currency=usd&description=Registration%20Fee%20for%20Gage%20Hirthe
+      string: amount=999&currency=usd&description=Registration%20Fee%20for%20Cade%20Luettgen
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -22,7 +22,7 @@ http_interactions:
         matetsi 3.13.0-49-generic #83-Ubuntu SMP Fri Apr 10 20:11:33 UTC 2015 x86_64
         x86_64 x86_64 GNU/Linux"}'
       Content-Length:
-      - '76'
+      - '78'
   response:
     status:
       code: 400
@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Sat, 25 Apr 2015 03:45:50 GMT
+      - Sat, 25 Apr 2015 12:12:31 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_xChTHLgPv5GKY9OY
+      - req_j8cuslyvucuFQgdF
       Stripe-Version:
       - '2015-04-07'
     body:
@@ -62,5 +62,5 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Sat, 25 Apr 2015 03:45:50 GMT
+  recorded_at: Sat, 25 Apr 2015 12:12:31 GMT
 recorded_with: VCR 2.9.3

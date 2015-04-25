@@ -10,7 +10,7 @@ describe UsersController, :vcr do
 
 describe "POST create" do 
     context "with valid personal info and card" do
-      let(:charge) { double(:charge, successfull?: true) }
+      let(:charge) { double(:charge, successful?: true) }
 
     before do
       post :create, user: Fabricate.attributes_for(:user)
