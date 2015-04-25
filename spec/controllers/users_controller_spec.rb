@@ -13,17 +13,16 @@ describe "POST create" do
       let(:charge) { double(:charge, successful?: true) }
 
     before do
-      StripeWrapper::Charge.should_receive(:create).and_return(charge)
-      
+      StripeWrapper::Charge.should_receive(:create).and_return(charge)   
     end
 
     it "creates the user" do
-      post :create, user: Fabricate.attributes_for(:user)
+      post :create, user: Fabricate.attributes_for(:user), stripeToken: '0246810'
       expect(User.count).to eq(1)                                            
     end
 
     it "redirects to the login page" do
-      post :create, user: Fabricate.attributes_for(:user)
+      post :create, user: Fabricate.attributes_for(:user), stripeToken: '0246810'
       expect(response).to redirect_to login_path
     end
   

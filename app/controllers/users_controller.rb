@@ -19,11 +19,11 @@ class UsersController < ApplicationController
         flash[:success] = "Thanks for registering, please log in and enjoy!"  
         redirect_to login_path
       else
-        flash[:danger] = charge.error_message
+        flash.now[:danger] = charge.error_message
         render :new
       end
     else
-      flash[:danger] = "Your infomation is invalid.  Please check the error messages and try again."
+      flash.now[:danger] = "Your infomation is invalid.  Please check the error messages and try again."
       render :new
     end
   end
