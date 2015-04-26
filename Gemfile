@@ -13,12 +13,13 @@ gem 'bcrypt'
 gem 'pg'
 gem 'fabrication'
 gem 'sidekiq'
-gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
+# gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 gem 'stripe'
 gem 'figaro'
+gem 'draper'
 
 group :development do
   gem 'thin'
