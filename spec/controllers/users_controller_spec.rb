@@ -84,7 +84,9 @@ describe "POST create" do
 
   context "with invalid personal info" do 
 
-    before do  post :create, user: { password: "passpass", full_name: "Zebron Zimuto"} 
+    before do  
+      post :create, user: { password: "passpass", full_name: "Zebron Zimuto"} 
+      ActionMailer::Base.deliveries.clear
     end
     
     it "does not create the user" do 
