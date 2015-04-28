@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe UsersController, :vcr do
+  before do 
+    ActionMailer::Base.deliveries.clear
+  end
   describe "GET new" do
     it "sets @user" do 
       get :new 
@@ -86,7 +89,6 @@ describe "POST create" do
 
     before do  
       post :create, user: { password: "passpass", full_name: "Zebron Zimuto"} 
-      ActionMailer::Base.deliveries.clear
     end
     
     it "does not create the user" do 

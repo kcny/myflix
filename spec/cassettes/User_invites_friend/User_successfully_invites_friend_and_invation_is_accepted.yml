@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.stripe.com/v1/charges
     body:
       encoding: US-ASCII
-      string: amount=999&currency=usd&card=tok_15wDBeHHAbUnMwm5Kq5Kx48v&description=Registration%20Fee%20for%20Jabu%20Dube
+      string: amount=999&currency=usd&card=tok_15wQ1fHHAbUnMwm5YvjPyXCt&description=Registration%20Fee%20for%20Jabu%20Dube
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -19,8 +19,8 @@ http_interactions:
       - application/x-www-form-urlencoded
       X-Stripe-Client-User-Agent:
       - '{"bindings_version":"1.20.4","lang":"ruby","lang_version":"2.1.2 p95 (2014-05-08)","platform":"x86_64-linux","publisher":"stripe","uname":"Linux
-        matetsi 3.13.0-49-generic #83-Ubuntu SMP Fri Apr 10 20:11:33 UTC 2015 x86_64
-        x86_64 x86_64 GNU/Linux"}'
+        zambezio 3.16.0-30-generic #40~14.04.1-Ubuntu SMP Thu Jan 15 17:43:14 UTC
+        2015 x86_64 x86_64 x86_64 GNU/Linux"}'
       Content-Length:
       - '108'
   response:
@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Mon, 27 Apr 2015 14:26:18 GMT
+      - Tue, 28 Apr 2015 04:08:51 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_GBve08dDoyHtKNDQ
+      - req_Z7GUe3tpmNxVQGHv
       Stripe-Version:
       - '2015-04-07'
       Strict-Transport-Security:
@@ -58,9 +58,9 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "ch_15wDBeHHAbUnMwm5utnpXUii",
+          "id": "ch_15wQ1fHHAbUnMwm53cY2Wi6c",
           "object": "charge",
-          "created": 1430144778,
+          "created": 1430194131,
           "livemode": false,
           "paid": true,
           "status": "succeeded",
@@ -68,7 +68,7 @@ http_interactions:
           "currency": "usd",
           "refunded": false,
           "source": {
-            "id": "card_15wDBeHHAbUnMwm5GtxICkE9",
+            "id": "card_15wQ1fHHAbUnMwm50OAnq5gC",
             "object": "card",
             "last4": "4242",
             "brand": "Visa",
@@ -92,7 +92,7 @@ http_interactions:
             "customer": null
           },
           "captured": true,
-          "balance_transaction": "txn_15wDBeHHAbUnMwm5aBSWyIkf",
+          "balance_transaction": "txn_15wQ1fHHAbUnMwm5FrH4yQLp",
           "failure_message": null,
           "failure_code": null,
           "amount_refunded": 0,
@@ -111,10 +111,10 @@ http_interactions:
             "object": "list",
             "total_count": 0,
             "has_more": false,
-            "url": "/v1/charges/ch_15wDBeHHAbUnMwm5utnpXUii/refunds",
+            "url": "/v1/charges/ch_15wQ1fHHAbUnMwm53cY2Wi6c/refunds",
             "data": []
           }
         }
     http_version: 
-  recorded_at: Mon, 27 Apr 2015 14:26:18 GMT
+  recorded_at: Tue, 28 Apr 2015 04:08:51 GMT
 recorded_with: VCR 2.9.3
