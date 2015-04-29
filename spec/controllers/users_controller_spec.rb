@@ -21,7 +21,8 @@ describe "POST create" do
   context "failed user sign up" do
     it "renders the new template" do 
       result = double(:sign_up_result, successful?: false, error_message: "This is an error message")
-      post :create, user: Fabricate.attributes_for(:user), stripeToken: '0246810'
+      UserSignup.any_instance.should_receive(:sign_up).and_return(result)
+      post :create, user: Fabricate.attributes_for(:user)
       expect(response).to render_template :new 
     end
     it "sets the flash error message" do 
@@ -31,7 +32,7 @@ describe "POST create" do
       expect(flash[:danger]).to eq("This is an error message")
     end
   end
-end
+
 
 describe "GET show" do
     it_behaves_like "requires login" do 
@@ -71,6 +72,7 @@ describe "GET show" do
       expect(response).to redirect_to expired_token_path
       end
     end
+  end
   
 
 
