@@ -41,7 +41,7 @@ module StripeWrapper
         )
         new(response: response)
        rescue Stripe::CardError => e
-         new(error_message: e.meassage)
+         new(error_message: e.message)
       end
     end
 
