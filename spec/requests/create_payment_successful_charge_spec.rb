@@ -78,4 +78,21 @@ describe "Create Payment On Successful Charge" do
     post "/stripe_events", event_data
     expect(Payment.count).to eq(1) 
   end
+
+  it "creates the user's payments", :vcr do
+    anesu = Fabricate(:user, customer_token: "cus_68qqodmxakznOC")
+    post "/stripe_events", event_data
+    expect(Payment.first.user).to eq(anesu)
+  end
+    it "creates the payment with an amount", :vcr do
+    anesu = Fabricate(:user, customer_token: "cus_68qqodmxakznOC")
+    post "/stripe_events", event_data
+    expect(Payment.first.amount).to eq(999)
+  end
+
+    it "creates payment with a reference id", :vcr do
+    anesu = Fabricate(:user, customer_token: "cus_68qqodmxakznOC")
+    post "/stripe_events", event_data
+    expect(Payment.first.reference_id).to eq("ch_15wZ8NHHAbUnMwm5bwh5JLVi")
+  end
 end

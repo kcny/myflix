@@ -14,6 +14,7 @@ class UserSignup
         :description => "Registration Fee for #{@user.full_name}"
       )
       if customer.successful?
+        @user.customer_token = customer.customer_token
         @user.save
         handle_invitation(invitation_token)  
         AppMailer.send_welcome_email(@user).deliver
