@@ -54,5 +54,13 @@ describe "queued_vidoe?" do
       expect(busi.follows?(busi)).to be_falsy
     end
   end
+
+  describe "deactivate" do
+    it "deactivates a currently active user." do
+      anesu = Fabricate(:user, active: true)
+      anesu.deactivate!
+      expect(anesu).not_to be_active
+    end
+  end
 end
 
