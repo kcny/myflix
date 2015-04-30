@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 30 Apr 2015 10:57:03 GMT
+      - Thu, 30 Apr 2015 11:40:53 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_jww7jy1PtcGRx3gO
+      - req_wBz8LoKLO9S4ievN
       Stripe-Version:
       - '2015-04-07'
       Strict-Transport-Security:
@@ -58,14 +58,14 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "tok_15xFLnHHAbUnMwm55jwqwdIO",
+          "id": "tok_15xG2DHHAbUnMwm57H8R1vw8",
           "livemode": false,
-          "created": 1430391423,
+          "created": 1430394053,
           "used": false,
           "object": "token",
           "type": "card",
           "card": {
-            "id": "card_15xFLnHHAbUnMwm5YSQTUYEc",
+            "id": "card_15xG2DHHAbUnMwm5czBtvvGe",
             "object": "card",
             "last4": "0002",
             "brand": "Visa",
@@ -89,13 +89,13 @@ http_interactions:
           "client_ip": "99.3.105.83"
         }
     http_version: 
-  recorded_at: Thu, 30 Apr 2015 10:57:03 GMT
+  recorded_at: Thu, 30 Apr 2015 11:40:53 GMT
 - request:
     method: post
     uri: https://api.stripe.com/v1/customers
     body:
       encoding: US-ASCII
-      string: card=tok_15xFLnHHAbUnMwm55jwqwdIO&email=turner%40thiel.biz&plan=base
+      string: card=tok_15xG2DHHAbUnMwm57H8R1vw8&email=alison.fritsch%40kub.biz&plan=base
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -112,7 +112,7 @@ http_interactions:
         matetsi 3.13.0-49-generic #83-Ubuntu SMP Fri Apr 10 20:11:33 UTC 2015 x86_64
         x86_64 x86_64 GNU/Linux"}'
       Content-Length:
-      - '68'
+      - '74'
   response:
     status:
       code: 402
@@ -121,7 +121,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 30 Apr 2015 10:57:03 GMT
+      - Thu, 30 Apr 2015 11:40:53 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -139,7 +139,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_L4i7Jr3OFWAmjRlh
+      - req_1TeLEZqn9dsE2wiC
       Stripe-Version:
       - '2015-04-07'
     body:
@@ -154,5 +154,5 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Thu, 30 Apr 2015 10:57:03 GMT
+  recorded_at: Thu, 30 Apr 2015 11:40:53 GMT
 recorded_with: VCR 2.9.3
