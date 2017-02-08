@@ -4,7 +4,7 @@ feature 'User registers', { js: true, vcr: true } do
   background do   
     visit register_path
   end
-
+  # fix error in next line and remove comment after
   scenario 'with valid user info and card' do
     fill_in_valid_user_info
     fill_in_valid_card

@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe UsersController, :vcr do
+  before do 
+    ActionMailer::Base.deliveries.clear
+  end
   describe "GET new" do
     it "sets @user" do 
       get :new 
@@ -21,17 +24,41 @@ describe "POST create" do
   context "failed user sign up" do
     it "renders the new template" do 
       result = double(:sign_up_result, successful?: false, error_message: "This is an error message")
-      post :create, user: Fabricate.attributes_for(:user), stripeToken: '0246810'
+      UserSignup.any_instance.should_receive(:sign_up).and_return(result)
+      post :create, user: Fabricate.attributes_for(:user)
       expect(response).to render_template :new 
     end
     it "sets the flash error message" do 
       result = double(:sign_up_result, successful?: false, error_message: "This is an error message")
       UserSignup.any_instance.should_receive(:sign_up).and_return(result)
       post :create, user: Fabricate.attributes_for(:user), stripeToken: '0246810'
-      expect(flash[:danger]).to eq("This is an error message")
+<<<<<<< HEAD
+      expect(flash[:danger]).to be_present
     end
   end
-end
+
+  context "with invalid personal info" do 
+
+    before do  
+      post :create, user: { password: "passpass", full_name: "Zebron Zimuto"} 
+    end
+    
+    it "does not create the user" do 
+      expect(User.count).to eq(0)
+      end
+
+    it "renders the :new template" do 
+      expect(response).to render_template :new
+    end
+
+     it "does not charge the card" do 
+      StripeWrapper::Charge.should_not_receive(:create)
+=======
+      expect(flash[:danger]).to eq("This is an error message")
+>>>>>>> master
+    end
+  end
+
 
 describe "GET show" do
     it_behaves_like "requires login" do 
@@ -71,6 +98,7 @@ describe "GET show" do
       expect(response).to redirect_to expired_token_path
       end
     end
+  end
   
 
 
