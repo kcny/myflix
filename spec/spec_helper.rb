@@ -27,25 +27,25 @@ RSpec.configure do |config|
   config.order = "random"
   config.treat_symbols_as_metadata_keys_with_true_values = true
   config.infer_spec_type_from_file_location!
-  
-    config.before(:suite) do
-      DatabaseCleaner.clean_with(:truncation)
-    end
 
-    config.before(:each) do
-      DatabaseCleaner.strategy = :transaction
-    end
-
-    config.before(:each, :js => true) do
-      DatabaseCleaner.strategy = :truncation
-    end
-
-    config.before(:each) do
-      DatabaseCleaner.start
-    end
-
-    config.after(:each) do
-      DatabaseCleaner.clean
-    end
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
   end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+end
 
