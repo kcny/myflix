@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
+ruby '2.3.1'
 
 gem 'bootstrap-sass', '3.1.1.1'
 gem 'coffee-rails'
@@ -13,6 +13,10 @@ gem 'bcrypt'
 gem 'pg'
 gem 'fabrication'
 gem 'sidekiq'
+<<<<<<< HEAD
+=======
+# gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
+>>>>>>> master
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
